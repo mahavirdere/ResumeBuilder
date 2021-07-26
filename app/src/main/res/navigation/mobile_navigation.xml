@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.tech.resumebuilder.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_skills"
+        android:name="com.tech.resumebuilder.ui.skills.MoreDetailsFragment"
+        android:label="@string/title_skills"
+        tools:layout="@layout/fragment_skills" />
+
+    <fragment
+        android:id="@+id/navigation_experience"
+        android:name="com.tech.resumebuilder.ui.experience.ExperienceFragment"
+        android:label="@string/title_experience"
+        tools:layout="@layout/fragment_experience" />
+
+    <fragment
+        android:id="@+id/navigation_more_details"
+        android:name="com.tech.resumebuilder.ui.experience.ExperienceFragment"
+        android:label="@string/title_more_details"
+        tools:layout="@layout/fragment_more_details" />
+</navigation>

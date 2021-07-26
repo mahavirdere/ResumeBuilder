@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ResumeBuilder</string>
+    <string name="title_home">Home</string>
+    <string name="title_skills">Skills</string>
+    <string name="title_experience">Experience</string>
+    <string name="title_more_details">More Details</string>
+</resources>
