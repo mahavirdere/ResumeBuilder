@@ -3,14 +3,18 @@ package com.tech.resumebuilder.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tech.resume_services.ResumeRepository
+import com.tech.resume_services.dto.ProfileDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(): ViewModel() {
+class HomeViewModel @Inject constructor(resumeRepo: ResumeRepository): ViewModel() {
+
+    private val profileDto: ProfileDTO = resumeRepo.retrieveProfile()
 
     private val _name = MutableLiveData<String>().apply {
-        value = "Mahavir Anil Dere"
+        value = profileDto.name
     }
     val name: LiveData<String> = _name
 

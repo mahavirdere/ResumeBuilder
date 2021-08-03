@@ -1,2 +1,3 @@
+include ':resume-services'
 include ':app'
 rootProject.name = "ResumeBuilder"
