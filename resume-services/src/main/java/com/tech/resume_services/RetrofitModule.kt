@@ -10,10 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ResumeModule {
+ object RetrofitModule {
 
     private val baseUrl = "https://resumeapi.s3.ap-south-1.amazonaws.com"
 
-    @Binds
-    abstract fun provideResumeRepository(resumeRepoImpl: ResumeRepositoryImpl): ResumeRepository
+    @Provides
+    fun provideResumeApi():ResumeApi {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(baseUrl)
+            .build()
+            .create(ResumeApi::class.java)
+    }
 }

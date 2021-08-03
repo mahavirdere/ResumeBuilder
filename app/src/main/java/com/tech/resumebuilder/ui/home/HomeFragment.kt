@@ -31,6 +31,10 @@ class HomeFragment : Fragment() {
         val hobbiesTextView: TextView = root.findViewById(R.id.hobbies_textView)
         val maritalStatusTextView: TextView = root.findViewById(R.id.marital_status_textView)
         val mobNoTextView: TextView = root.findViewById(R.id.mob_no_textView)
+
+        homeViewModel.profileDto.observe(viewLifecycleOwner, Observer {
+            homeViewModel.updateProfileData(it)
+        })
         homeViewModel.name.observe(viewLifecycleOwner, Observer {
             nameTextView.text = it
         })
