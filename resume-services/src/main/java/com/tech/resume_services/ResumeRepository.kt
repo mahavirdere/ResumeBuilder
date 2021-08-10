@@ -10,7 +10,7 @@ interface ResumeRepository {
 
     fun retrieveProfile(): LiveData<ProfileDTO>
 
-    fun retrieveSkills(): SkillsDTO
+    fun retrieveSkills(): LiveData<List<SkillsDTO>>
 
     fun retrieveExperience(): ExperienceDTO
 

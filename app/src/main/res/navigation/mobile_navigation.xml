@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_skills"
-        android:name="com.tech.resumebuilder.ui.skills.MoreDetailsFragment"
+        android:name="com.tech.resumebuilder.ui.skills.SkillsFragment"
         android:label="@string/title_skills"
         tools:layout="@layout/fragment_skills" />
 
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_more_details"
-        android:name="com.tech.resumebuilder.ui.experience.ExperienceFragment"
+        android:name="com.tech.resumebuilder.ui.moreDetails.MoreDetailsFragment"
         android:label="@string/title_more_details"
         tools:layout="@layout/fragment_more_details" />
 </navigation>

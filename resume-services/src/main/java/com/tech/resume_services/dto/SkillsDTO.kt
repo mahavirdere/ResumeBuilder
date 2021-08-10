@@ -1,4 +1,6 @@
 package com.tech.resume_services.dto
 
-class SkillsDTO {
-}
+data class SkillsDTO(
+    val skillName:String,
+    val skillRating:Float
+)
