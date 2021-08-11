@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.tech.resumebuilder.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -56,6 +57,19 @@ class HomeFragment : Fragment() {
         homeViewModel.mobNo.observe(viewLifecycleOwner, Observer {
             mobNoTextView.text = it
         })
+
+        val skillsLink: TextView = root.findViewById(R.id.skillsLink)
+        val expLink: TextView = root.findViewById(R.id.expLink)
+        val mDetLink: TextView = root.findViewById(R.id.mDetLink)
+        skillsLink.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_skills)
+        }
+        expLink.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_experience)
+        }
+        mDetLink.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_more_details)
+        }
         return root
     }
 }

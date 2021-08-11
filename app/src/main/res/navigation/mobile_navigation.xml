@@ -9,7 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="com.tech.resumebuilder.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_skills"
+            app:destination="@id/navigation_skills" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_experience"
+            app:destination="@id/navigation_experience" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_more_details"
+            app:destination="@id/navigation_more_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_skills"
