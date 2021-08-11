@@ -1,13 +1,14 @@
-package com.tech.resumebuilder.ui.skills
+package com.tech.resumebuilder.ui.moreDetails
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tech.resume_services.ResumeRepository
+import com.tech.resume_services.dto.MoreDetailsDTO
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MoreDetailsViewModel : ViewModel() {
+@HiltViewModel
+class MoreDetailsViewModel @Inject constructor(resumeRepo: ResumeRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+    val moreDetDto: LiveData<MoreDetailsDTO> = resumeRepo.retrieveMoreDetails()
 }

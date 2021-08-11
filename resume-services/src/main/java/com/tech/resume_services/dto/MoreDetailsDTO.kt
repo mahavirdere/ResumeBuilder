@@ -1,4 +1,9 @@
 package com.tech.resume_services.dto
 
-class MoreDetailsDTO {
-}
+data class MoreDetailsDTO(
+    val certifications: Array<String>,
+    val gitHubUrl: String,
+    val linkedInUrl: String,
+    val blogUrl: String,
+    val resumeUrl: String
+)

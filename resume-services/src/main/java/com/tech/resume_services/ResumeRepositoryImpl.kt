@@ -61,7 +61,23 @@ class ResumeRepositoryImpl @Inject constructor() :ResumeRepository {
         return ExperienceDTO()
     }
 
-    override fun retrieveMoreDetails(): MoreDetailsDTO {
-        return MoreDetailsDTO()
+    override fun retrieveMoreDetails(): LiveData<MoreDetailsDTO> {
+        val moreDetDto:MutableLiveData<MoreDetailsDTO> = MutableLiveData()
+        val moreDetApi = resumeApi.retrieveMoreDetails()
+        Log.i("@ResumeBuilder", "Calling More Details API")
+        moreDetApi.enqueue(object : Callback<MoreDetailsDTO> {
+            override fun onResponse(call: Call<MoreDetailsDTO>?, response: Response<MoreDetailsDTO>?) {
+                Log.i("@ResumeBuilder", "Response Received for More Details API $response")
+                if(response?.body() != null)
+                    moreDetDto.value = response.body()!!
+                else
+                    Log.i("@ResumeBuilder", "Response Body not found for More Details API")
+            }
+
+            override fun onFailure(call: Call<MoreDetailsDTO>?, t: Throwable?) {
+                Log.i("@ResumeBuilder", "Error while connecting to More Details API (JSON) ${t?.message}")
+            }
+        })
+        return moreDetDto
     }
 }

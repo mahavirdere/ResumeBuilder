@@ -1,5 +1,6 @@
 package com.tech.resume_services
 
+import com.tech.resume_services.dto.MoreDetailsDTO
 import com.tech.resume_services.dto.ProfileDTO
 import com.tech.resume_services.dto.SkillsDTO
 import retrofit2.Call
@@ -12,4 +13,6 @@ interface ResumeApi {
 
     @GET("/skills.json")
     fun retrieveSkills(): Call<List<SkillsDTO>>
-}
+
+    @GET("/more-details.json")
+    fun retrieveMoreDetails(): Call<MoreDetailsDTO>}

@@ -14,5 +14,5 @@ interface ResumeRepository {
 
     fun retrieveExperience(): ExperienceDTO
 
-    fun retrieveMoreDetails(): MoreDetailsDTO
+    fun retrieveMoreDetails(): LiveData<MoreDetailsDTO>
 }
