@@ -3,7 +3,7 @@ package com.tech.resume_services
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tech.resume_services.dto.ExperienceDTO
+import com.tech.resume_services.dto.ProjectDTO
 import com.tech.resume_services.dto.MoreDetailsDTO
 import com.tech.resume_services.dto.ProfileDTO
 import com.tech.resume_services.dto.SkillsDTO
@@ -57,8 +57,24 @@ class ResumeRepositoryImpl @Inject constructor() :ResumeRepository {
         return skillsList
     }
 
-    override fun retrieveExperience(): ExperienceDTO {
-        return ExperienceDTO()
+    override fun retrieveProjects(): LiveData<List<ProjectDTO>> {
+        val projectList:MutableLiveData<List<ProjectDTO>> = MutableLiveData<List<ProjectDTO>>()
+        val projectsApi = resumeApi.retrieveProjects()
+        Log.i("@ResumeBuilder", "Calling Project API")
+        projectsApi.enqueue(object : Callback<List<ProjectDTO>> {
+            override fun onResponse(call: Call<List<ProjectDTO>>?, response: Response<List<ProjectDTO>>?) {
+                Log.i("@ResumeBuilder", "Response Received for Project API $response")
+                if(response?.body() != null)
+                    projectList.value = response.body()!!
+                else
+                    Log.i("@ResumeBuilder", "Response Body not found for Project API")
+            }
+
+            override fun onFailure(call: Call<List<ProjectDTO>>?, t: Throwable?) {
+                Log.i("@ResumeBuilder", "Error while connecting to Project API (JSON)")
+            }
+        })
+        return projectList
     }
 
     override fun retrieveMoreDetails(): LiveData<MoreDetailsDTO> {

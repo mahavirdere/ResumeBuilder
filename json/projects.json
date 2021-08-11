@@ -1,0 +1,33 @@
+[{
+	"id" : 1,
+	"title" : "Resume Builder",
+	"desc" : "This is the mobile app and will help to build the Resume. it gives  fuunctionality to link LinkedIn, GitHub Accounts. It helps to show the Certification opted. We can download the Resume PDF once details are submitted.",
+	"duration" : "01-02-2021 To Till now",
+	"role" : "Android Developer",
+	"technologyUsed" : "Kotlin, Android API 23"
+},
+{
+	"id" : 2,
+	"title" : "SysPro ERP",
+	"desc" : "This is a ERP system. It Offers Sales, Purchase, Inventory modules. It Provides reports and analytics data for forecasting for production and inventory Management.",
+	"duration" : "02-03-2020 To 31-01-2021",
+	"role" : "Tech Lead",
+	"technologyUsed" : "Java/J2EE, Spring Boot, JPA, Angular"
+},
+{
+	"id" : 3,
+	"title" : "BizCom CRM",
+	"desc" : "This is a web based CRM systme. This is all in one CRM solution. It tracks details from Enquiry to Order delivery. provodes offers based on customer segment.",
+	"duration" : "15-12-2018 To 01-03-2020",
+	"role" : "API Developer",
+	"technologyUsed" : "Servlet, JSP, Java"
+},
+{
+	"id" : 4,
+	"title" : "Trendz",
+	"desc" : "This is data analytics project where large data in datawarehouse is analyzed to share the customer trends. It helps customer to create stategy for bussiness growth.",
+	"duration" : "04-06-2017 To 14-12-2018",
+	"role" : "Developer",
+	"technologyUsed" : "AI/ML, Python, TensorFlow"
+}
+]

@@ -3,11 +3,14 @@ package com.tech.resumebuilder.ui.experience
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tech.resume_services.ResumeRepository
+import com.tech.resume_services.dto.ProjectDTO
+import com.tech.resume_services.dto.SkillsDTO
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ExperienceViewModel : ViewModel() {
+@HiltViewModel
+class ExperienceViewModel @Inject constructor(resumeRepo: ResumeRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+    val projectList: LiveData<List<ProjectDTO>> = resumeRepo.retrieveProjects()
 }

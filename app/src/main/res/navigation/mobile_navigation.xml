@@ -21,7 +21,37 @@
         android:id="@+id/navigation_experience"
         android:name="com.tech.resumebuilder.ui.experience.ExperienceFragment"
         android:label="@string/title_experience"
-        tools:layout="@layout/fragment_experience" />
+        tools:layout="@layout/fragment_experience" >
+        <action
+            android:id="@+id/action_navigation_experience_to_navigation_proj_det"
+            app:destination="@id/navigation_proj_det" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_proj_det"
+        android:name="com.tech.resumebuilder.ui.experience.projectDetails.ProjectDetailsFragment"
+        android:label="@string/title_project_details"
+        tools:layout="@layout/project_details_fragment" >
+        <action
+            android:id="@+id/action_navigation_proj_det_to_navigation_experience"
+            app:destination="@id/navigation_experience" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="desc"
+            app:argType="string" />
+        <argument
+            android:name="duration"
+            app:argType="string" />
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <argument
+            android:name="technologiesUsed"
+            app:argType="string" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_more_details"
