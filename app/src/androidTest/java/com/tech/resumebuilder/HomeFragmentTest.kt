@@ -1,39 +1,51 @@
 package com.tech.resumebuilder
 
+import android.util.Log
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tech.resumebuilder.ui.home.HomeFragment
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class HomeFragmentTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+    @Before
+    fun init(){
+        hiltRule.inject()
+    }
 
     @Test
     fun navigateToHomeTab() {
-        // Create a TestNavHostController
+         //Create a TestNavHostController
         val navController = TestNavHostController(
             ApplicationProvider.getApplicationContext())
 
-
-        // Create a graphical FragmentScenario for the TitleScreen
-        val homeScreen = launchFragmentInContainer<HomeFragment>()
-
-        homeScreen.onFragment { fragment ->
-
+        launchFragmentInHiltContainer<HomeFragment> {
             // Set the graph on the TestNavHostController
             navController.setGraph(R.navigation.mobile_navigation)
 
             // Make the NavController available via the findNavController() APIs
-            Navigation.setViewNavController(fragment.requireView(), navController)
+            Navigation.setViewNavController(requireView(), navController)
         }
-//
-//        // Verify that performing a click changes the NavController’s state
-//        onView(ViewMatchers.withId(R.id.play_btn)).perform(ViewActions.click())
-//        assertThat(navController.currentDestination?.id).isEqualTo(R.id.in_game)
+        onView(withId(R.id.skillsLink)).check(matches(isDisplayed()))
     }
 }
